@@ -1,0 +1,9 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyC1krO16zPiB8foPZMGgVIjobl25BkyFyg",
+  authDomain: "blog-on-angular-9b227.firebaseapp.com",
+  projectId: "blog-on-angular-9b227",
+  storageBucket: "blog-on-angular-9b227.appspot.com",
+  messagingSenderId: "127536593177",
+  appId: "1:127536593177:web:2524e2d77c5e00137fed88",
+  measurementId: "G-V7SDRM6EF7"
+};
