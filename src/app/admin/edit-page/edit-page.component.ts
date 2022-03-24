@@ -7,14 +7,13 @@ import { PostsService } from '../shared/posts.service';
 
 @Component({
   selector: 'app-edit-page',
-  templateUrl: './edit-page.component.html',
-  styleUrls: ['./edit-page.component.scss']
+  templateUrl: './edit-page.component.html'
 })
 export class EditPageComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   post!: Post;
   submitted: boolean = false;
-  uSub: Subscription = new Subscription();
+  uSub!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +52,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
       text: this.form.value.text,
       title: this.form.value.title
     })
-    .subscribe(() => {
+    .subscribe((item) => {
+      console.log(item)
       this.submitted = false;
     })
   }

@@ -22,7 +22,7 @@
     <div class="form-control"
     [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}">
         <label>Author</label>
-        <input id="author" type="author" formControlName="author">
+        <input id="author" type="text" formControlName="author">
         <div class="validation" 
         *ngIf="form.get('author').touched && form.get('author').invalid">
             <small 
