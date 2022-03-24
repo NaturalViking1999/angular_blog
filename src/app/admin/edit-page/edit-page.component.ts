@@ -20,18 +20,20 @@ export class EditPageComponent implements OnInit, OnDestroy {
     private postsService: PostsService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params
     .pipe(
       switchMap((params: Params) => {
         return this.postsService.getById(params['id'])
     }))
     .subscribe((post: Post) => {
+      this.post = post;
       this.form = new FormGroup({
         title: new FormControl(post.title, [Validators.required]),
         text: new FormControl(post.text, [Validators.required])
       })
     })
+    console.log(this.post)
   }
 
   ngOnDestroy(): void {
@@ -46,14 +48,14 @@ export class EditPageComponent implements OnInit, OnDestroy {
     }
 
     this.submitted = true;
-
+    
     this.uSub = this.postsService.update({
       ...this.post,
       text: this.form.value.text,
-      title: this.form.value.title
+      title: this.form.value.title,
+      date: new Date()
     })
-    .subscribe((item) => {
-      console.log(item)
+    .subscribe(() => {
       this.submitted = false;
     })
   }

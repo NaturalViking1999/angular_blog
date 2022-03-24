@@ -48,14 +48,11 @@ export class PostsService {
         return this.http.get<Post>(`${environment.firebaseDatabaseUrl}/posts/${id}.json`)
         .pipe(
             map((post: Post) => {
-                return {
-                    ...post, id,
-                    date: new Date(post.date)
-                }
+                return {...post, id}
             }))
     }
 
     update(post: Post): Observable<Post> {
-        return this.http.put<Post>(`${environment.firebaseDatabaseUrl}/posts/${post.id}.json`, post)
+        return this.http.patch<Post>(`${environment.firebaseDatabaseUrl}/posts/${post.id}.json`, post)
     }
 }
